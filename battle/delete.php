@@ -5,7 +5,7 @@
  $deleted = $req->execute([$_GET['id_habitant']]);
  if($deleted)
  {
- 	header('Location: habitant1.php?id='.$_GET['id']);
+ 	header('Location: habitants-1.php?id='.$_GET['id']);
  }
- $continents = $request->fetchAll();
+ $continents = $request->fetchAll(PDO::FETCH_OBJ);
 ?>
