@@ -10,7 +10,7 @@
                   WHERE continents.id = ?');
 
       $req->execute([$_GET['id']]);
-   $villes = $req->fetchAll();
+   $villes = $req->fetchAll(PDO::FETCH_OBJ);
    if(isset($_POST['update']))
    {
       $req = $db->prepare('UPDATE villes SET superficie = ? WHERE id = ?');
