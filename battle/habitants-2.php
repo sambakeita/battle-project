@@ -15,24 +15,29 @@ include('db.php');
                   ON continents.id = pays.id
                   WHERE continents.id = ?
                   ORDER BY habitants.solde ASC');
+      $req->execute([$_GET['id']]);
+   $habitants = $req->fetchAll(PDO::FETCH_OBJ);
 
-       $req = $db->prepare('SELECT habitants.*, communes.nom as nom_commune 
+     $req = $db->prepare('SELECT SUM(solde) AS total
                   FROM habitants
-                   JOIN quartiers
+                  JOIN quartiers
                   ON quartiers.id = habitants.id_quartier
-                   JOIN communes
+                  JOIN communes
                   ON communes.id = quartiers.id_commune
-                   JOIN villes
+                  JOIN villes
                   ON villes.id = communes.id_ville
-                   JOIN pays
+                  JOIN pays
                   ON pays.id = villes.id_pays
-                   JOIN continents
+                  JOIN continents
                   ON continents.id = pays.id
                   WHERE continents.id = ?
                   ORDER BY habitants.solde ASC');
 
+
+      
+
        $req->execute([$_GET['id']]);
-   $total = $req>fetch();
+   $total = $req->fetch(PDO::FETCH_OBJ);
    if(isset($_POST['update']))
    {
       $req = $db->prepare('UPDATE villes SET superficie = ? WHERE id = ?');
