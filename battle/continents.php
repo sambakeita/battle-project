@@ -39,8 +39,8 @@
           <td><?= $continent->superficie ?></td>
           <td>
               <a href="pays.php?id=<?= $continent->id ?>" class="btn btn-primary">Voir pays</a>
-              <a href="ville.php?id=<?= $continent->id ?>" class="btn btn-success">Voir villes</a>
-              <a href="habitant1.php?id=<?= $continent->id ?>" class="btn btn-danger">Voir habitants</a>
+              <a href="villes.php?id=<?= $continent->id ?>" class="btn btn-success">Voir villes</a>
+              <a href="habitants-1.php?id=<?= $continent->id ?>" class="btn btn-danger">Voir habitants</a>
           </td>
       </tr>
     <?php endforeach ?>
